@@ -1,0 +1,16 @@
+{
+  "name": "sign-finder-bot",
+  "version": "1.0.0",
+  "description": "The bot finds a sign by its description",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Felix Tisov",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "telegraf": "^4.4.1"
+  }
+}
