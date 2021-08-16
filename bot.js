@@ -37,7 +37,7 @@ try{
         ['Карточные масти', 'Знаки зодиака'],
         ['Греческие буквы']
     ]).resize(),
-    console.log(ctx.message.from.first_name)))
+    console.log('UserName: ' + ctx.message.from.first_name)))
 
     bot.hears('Привет',(ctx) => ctx.replyWithSticker('CAACAgIAAxkBAAECwRBhGTo7loZ3iVc43jfvYvFAB4hNUQACDgADr8ZRGrdbgux-ASf3IAQ'))
     bot.hears('привет',(ctx) => ctx.replyWithSticker('CAACAgIAAxkBAAECwRBhGTo7loZ3iVc43jfvYvFAB4hNUQACDgADr8ZRGrdbgux-ASf3IAQ'))
