@@ -16,7 +16,7 @@ const obj = {
   ...Object.fromEntries(["не включая","невключение","не включение","не входит","не включается","не содержится"].map(key => [key, '⊄'])),
   ...Object.fromEntries(["нижний прочекр","нижнее подчеркивание","нижнее подчёркивание"].map(key => [key, '_'])),
   ...Object.fromEntries(["объединение","знак объединения","объединяет"].map(key => [key, '∪'])),
-  ...Object.fromEntries(["охраняемый","знак охраны","права","защита прав"].map(key => [key, '®'])),
+  ...Object.fromEntries(["охраняемый","знак охраны","права","защита прав","R","r"].map(key => [key, '®'])),
   ...Object.fromEntries(["пересечение","знак пересечения","пересекает"].map(key => [key, '∩'])),
   ...Object.fromEntries(["приблизительно равно","приблизительное равенство","примерно равно","примерное равенство"].map(key => [key, '≈'])),
   ...Object.fromEntries(["принадлежит","принадлежность","знак принадлежности"].map(key => [key, '∈'])),
@@ -27,10 +27,12 @@ const obj = {
   ...Object.fromEntries(["решетка","решётка"].map(key => [key, '#'])), 
   ...Object.fromEntries(["ро","буква ро"].map(key => [key, 'ρ'])),  
   ...Object.fromEntries(["ромб","ромбик"].map(key => [key, '◊'])), 
+  ...Object.fromEntries(["сетка","сеточка"].map(key => [key, '▦'])),
   ...Object.fromEntries(["сердце","сердечко"].map(key => [key, '❤'])),
   ...Object.fromEntries(["степень","знак степени", "возведение в степень"].map(key => [key, '^'])),
   ...Object.fromEntries(["сумма","сумма по","знак суммы"].map(key => [key, '∑'])),
   ...Object.fromEntries(["тире","длинное тире"].map(key => [key, '—'])), 
+  ...Object.fromEntries(["товарный знак","tm","тм","TM"].map(key => [key, '™'])), 
   ...Object.fromEntries(["умножить","умножение"].map(key => [key, '×'])), 
   ...Object.fromEntries(["фи","сбуква фи"].map(key => [key, 'φ'])), 
   ...Object.fromEntries(["эквивалентность","эквиваленция","подобно","подобие","тильда"].map(key => [key, '∿'])),
@@ -66,17 +68,20 @@ SYMBOLS_VOCAB.set("ом", "Ω")
 SYMBOLS_VOCAB.set("омега", "ω")
 SYMBOLS_VOCAB.set("отрицание", "¬") 
 SYMBOLS_VOCAB.set("параграф", "§")
+SYMBOLS_VOCAB.set("параллелограмм", "▰") 
 SYMBOLS_VOCAB.set("плюс", "+")
 SYMBOLS_VOCAB.set("подмножество", "⊆")
 SYMBOLS_VOCAB.set("почта", "✉")
 SYMBOLS_VOCAB.set("производная", "f'(x)")
 SYMBOLS_VOCAB.set("промилле", "‰") 
 SYMBOLS_VOCAB.set("процент", "%") 
-SYMBOLS_VOCAB.set("прямая сумма", "⊕") 
+SYMBOLS_VOCAB.set("прямая сумма", "⊕")
+SYMBOLS_VOCAB.set("прямоугольник", "▭") 
 SYMBOLS_VOCAB.set("пустое множество", "∅")
 SYMBOLS_VOCAB.set("равно", "=")
 SYMBOLS_VOCAB.set("радиация", "☣")
 SYMBOLS_VOCAB.set("собака", "@")
+SYMBOLS_VOCAB.set("стрелка", "↗") 
 SYMBOLS_VOCAB.set("стрелка влево", "←")
 SYMBOLS_VOCAB.set("стрелка вверх", "↑")
 SYMBOLS_VOCAB.set("стрелка вправо", "→")
@@ -84,9 +89,9 @@ SYMBOLS_VOCAB.set("стрелка вниз", "↓")
 SYMBOLS_VOCAB.set("стремится", "⟶")
 SYMBOLS_VOCAB.set("телефон", "☎")
 SYMBOLS_VOCAB.set("тензорное произведение", "⊗")
-SYMBOLS_VOCAB.set("товарный знак", "™")
 SYMBOLS_VOCAB.set("треугольник", "▲")
-SYMBOLS_VOCAB.set("угол", "∠")
+SYMBOLS_VOCAB.set("угол", "∠") 
 SYMBOLS_VOCAB.set("фунт", "£")
+SYMBOLS_VOCAB.set("часы", "◴")
 
 module.exports = SYMBOLS_VOCAB
