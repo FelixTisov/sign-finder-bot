@@ -133,9 +133,11 @@ try{
         })      
     }
 
-    async function readRequest() {
+    function readRequest() {
             let fs = require('fs')
-            fs.readFile('unrecognized_requests.txt', 'utf8', function(err, data){console.log(data)})
+            fs.readFile('unrecognized_requests.txt', 'utf8', function(err, data){
+                console.log('Нераспознанные запросы: \n' + data)
+            })
         }
 
 } catch {
@@ -144,5 +146,7 @@ try{
 
 bot.launch()
 console.log('Бот запущен!')
+readRequest()
+
 
 
