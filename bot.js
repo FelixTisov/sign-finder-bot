@@ -131,6 +131,7 @@ try{
         })
         message = `${message}\n` + file_readed
         fs.writeFile('unrecognized_requests.txt', message, function(err, data){})
+        console.log(message)
     }
 
 } catch {
