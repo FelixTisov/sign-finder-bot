@@ -1,5 +1,5 @@
 require('dotenv').config()
-
+let requests = require('unrecognized_requests')
 const { Telegraf } = require('telegraf')
 const bot = new Telegraf(process.env.BOT_TOKEN)
 const {Markup} = require('telegraf')
@@ -123,21 +123,12 @@ try{
         return value
     }
 
-    async function writeRequest(message) {
-        let fs = require('fs')
-        let file_readed
-        await fs.readFile('unrecognized_requests.txt', 'utf8', function(err, data){
-            file_readed = data
-            message = file_readed + `${message}\n`
-            fs.writeFile('unrecognized_requests.txt', message, function(err, data){})
-        })      
+    function writeRequest(message) {
+            requests += `${message}\n`  
     }
 
     function readRequest() {
-            let fs = require('fs')
-            fs.readFile('unrecognized_requests.txt', 'utf8', function(err, data){
-                console.log('Нераспознанные запросы: \n' + data)
-            })
+            console.log(requests)
         }
 
 } catch {
