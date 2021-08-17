@@ -116,10 +116,21 @@ try{
         let vocab = SYMBOLS_VOCAB
         let value = vocab.get(input)
         if(value==undefined) {
+            writeRequest(input)
             return `Такой символ не найден...🙁
-Попробуй написать по-другому.`
+Попробуй написать по-другому.`           
         } else
         return value
+    }
+
+    function writeRequest(message) {
+        let fs = require('fs')
+        let file_readed
+        fs.readFile('unrecognized_requests.txt', 'utf8', function(err, data){
+            file_readed = data
+        })
+        message = `${message}\n` + file_readed
+        fs.writeFile('unrecognized_requests.txt', message, function(err, data){})
     }
 
 } catch {
