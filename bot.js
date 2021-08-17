@@ -123,15 +123,15 @@ try{
         return value
     }
 
-    function writeRequest(message) {
+    async function writeRequest(message) {
         let fs = require('fs')
         let file_readed
-        fs.readFile('unrecognized_requests.txt', 'utf8', function(err, data){
+        await fs.readFile('unrecognized_requests.txt', 'utf8', function(err, data){
             file_readed = data
+            message = file_readed + `${message}\n`
+            fs.writeFile('unrecognized_requests.txt', message, function(err, data){})
         })
-        message = `${message}\n` + file_readed
-        fs.writeFile('unrecognized_requests.txt', message, function(err, data){})
-        console.log(message)
+        
     }
 
 } catch {
