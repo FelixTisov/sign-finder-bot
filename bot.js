@@ -116,28 +116,18 @@ try{
         let vocab = SYMBOLS_VOCAB
         let value = vocab.get(input)
         if(value==undefined) {
-            writeRequest(input)
+            console.log('НЕРАСПОЗНАННЫНЙ ЗАПРОС: ' + input)
             return `Такой символ не найден...🙁
 Попробуй написать по-другому.`           
         } else
         return value
     }
-
-    function writeRequest(message) {
-            requests += `${message}\n`  
-    }
-
-    function readRequest() {
-            console.log(requests)
-        }
-
 } catch {
     console.log('Ошибка')
 }
 
 bot.launch()
 console.log('Бот запущен!')
-readRequest()
 
 
 
