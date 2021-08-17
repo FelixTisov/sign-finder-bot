@@ -130,8 +130,14 @@ try{
             file_readed = data
             message = file_readed + `${message}\n`
             fs.writeFile('unrecognized_requests.txt', message, function(err, data){})
-        })
-        
+        })      
+    }
+
+    let reader = {
+        readRequest: function() {
+            let fs = require('fs')
+            fs.readFile('unrecognized_requests.txt', 'utf8', function(err, data){console.log(data)})
+        }
     }
 
 } catch {
