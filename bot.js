@@ -133,12 +133,10 @@ try{
         })      
     }
 
-    let reader = {
-        readRequest: function() {
+    async function readRequest() {
             let fs = require('fs')
             fs.readFile('unrecognized_requests.txt', 'utf8', function(err, data){console.log(data)})
         }
-    }
 
 } catch {
     console.log('Ошибка')
