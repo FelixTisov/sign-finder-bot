@@ -122,6 +122,12 @@ try{
         } else
         return value
     }
+
+    var http = require("http");
+    setInterval(function() {
+    http.get("http://sign-finder-bot.herokuapp.com");
+    }, 300000); // every 5 minutes (300000)
+
 } catch {
     console.log('Ошибка')
 }
