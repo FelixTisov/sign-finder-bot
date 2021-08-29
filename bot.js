@@ -123,10 +123,10 @@ try{
         return value
     }
 
-    var http = require("http");
+    let http = require("http")
     setInterval(function() {
-    http.get("http://sign-finder-bot.herokuapp.com");
-    }, 300000); // every 5 minutes (300000)
+    http.get("http://sign-finder-bot.herokuapp.com")
+    }, 144000000) // every 5 minutes (300000)
 
 } catch {
     console.log('Ошибка')
