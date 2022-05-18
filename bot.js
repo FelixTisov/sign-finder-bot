@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const { Telegraf } = require('telegraf')
-const bot = new Telegraf(process.env.BOT_TOKEN)
+const bot = new Telegraf("1895328502:AAFyAiKx4DAOpNlxIbNCMcnVDmgUuAmle50")
 const {Markup} = require('telegraf')
 const SYMBOLS_VOCAB = require('./symbols/symbols')
 const MATH_SYMBOLS = require('./symbols/math')
