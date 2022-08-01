@@ -1,8 +1,7 @@
-require('dotenv').config()
-
-const { Telegraf } = require('telegraf')
+const { Telegraf, Markup } = require('telegraf')
 const bot = new Telegraf("1895328502:AAGAHHPnAaOz0FLx32jmQjxNzV2TlwrYeF0")
-const {Markup} = require('telegraf')
+
+// Категории символов
 const SYMBOLS_VOCAB = require('./symbols/symbols')
 const MATH_SYMBOLS = require('./symbols/math')
 const FRACTIONS = require('./symbols/fractions')
@@ -26,19 +25,23 @@ try{
 Напиши название символа, чтобы я 
 смог найти его для тебя🙂
 /help - узнать подробнее.`,
-    Markup.keyboard([        
-        ['Математические символы'],
-        ['Дроби', 'Круги'],
-        ['Стрелки', 'Звёзды'],
-        ['Ноты', 'Квадраты'],
-        ['Снежинки', 'Валюты'],
-        ['Шахматы', 'Указатели'],
-        ['Крестики', 'Треугольники'],
-        ['Карточные масти', 'Знаки зодиака'],
-        ['Греческие буквы']
-    ]).resize(),
-    console.log('UserName: ' + ctx.message.from.first_name)))
 
+        // Кнопки меню
+        Markup.keyboard([        
+            ['Математические символы'],
+            ['Дроби', 'Круги'],
+            ['Стрелки', 'Звёзды'],
+            ['Ноты', 'Квадраты'],
+            ['Снежинки', 'Валюты'],
+            ['Шахматы', 'Указатели'],
+            ['Крестики', 'Треугольники'],
+            ['Карточные масти', 'Знаки зодиака'],
+            ['Греческие буквы']
+        ]).resize()
+
+    ))
+
+    // Команды, которые распознает бот 
     bot.hears('Привет',(ctx) => ctx.replyWithSticker('CAACAgIAAxkBAAECwRBhGTo7loZ3iVc43jfvYvFAB4hNUQACDgADr8ZRGrdbgux-ASf3IAQ'))
     bot.hears('привет',(ctx) => ctx.replyWithSticker('CAACAgIAAxkBAAECwRBhGTo7loZ3iVc43jfvYvFAB4hNUQACDgADr8ZRGrdbgux-ASf3IAQ'))
     bot.hears('Математические символы',(ctx) => ctx.reply(MATH_SYMBOLS))
@@ -58,12 +61,7 @@ try{
     bot.hears('Знаки зодиака',(ctx) => ctx.reply(ZODIAC))
     bot.hears('Греческие буквы',(ctx) => ctx.reply(GREEK_LETTERS))
 
-    const stick = [
-        {source: './stickers/sticker.png'},
-        {source: './stickers/sticker1.png'},
-        {source: './stickers/sticker2.png'},
-        {source: './stickers/sticker3.png'},
-    ]
+    // Стикеры, используемые ботом
     const stickersId = [
         'CAACAgEAAxkBAAECwF5hGGfQxMiyYMl1KKVRUH7gd4TiJwACIgADOA6CEd4wNMezt3dkIAQ',
         'CAACAgIAAxkBAAECwGBhGGibWyHjJ5mMkEBFLEU_qLGMQgAClQADMNSdET3bz5sVDcdXIAQ',
@@ -82,7 +80,11 @@ try{
         'CAACAgIAAxkBAAECwPthGReRaYh-8VL3DYg_ok3jp4feygACFAADr8ZRGgu7XTT4sVnxIAQ',
         'CAACAgIAAxkBAAECwP1hGRfAkLO1h8Hj2Er2wI21QiDpLAACBAADr8ZRGhhqTEj6gDwaIAQ'
     ]
-    let last = -1
+
+    // Последний использованный стикер, чтобы при ответе он не повторялся
+    let last 
+
+    // Рандомайзер для выбора стикера
     function getRandomInt(min, max) {
         let rd
         rd = Math.floor(Math.random() * (max - min + 1)) + min
@@ -96,9 +98,12 @@ try{
         return rd
     }
 
-    bot.on('voice', (ctx) => ctx.replyWithSticker(stickersId[getRandomInt(0,6)]))   
-    bot.on('sticker', (ctx) => ctx.replyWithSticker(stickersId[getRandomInt(0,15)]))
-
+    // Если пользователь отправил голосовое сообщение 
+    bot.on('voice', (ctx) => ctx.replyWithSticker(stickersId[getRandomInt(0,6)])) 
+    // Если пользователь отправил стикер
+    bot.on('sticker', (ctx) => ctx.replyWithSticker(stickersId[getRandomInt(0,15)])) 
+    
+    // Кнопка помощи
     bot.help((ctx) => ctx.reply(`Что может этот бот? Он ищет символ 
 по названию и прислает его тебе, чтобы
 ты мог его использовать, где угодно!
@@ -106,12 +111,14 @@ try{
 отправит его тебе. Или используй поиск
 по категориям символов.`))
 
+    // Получение текстового сообщения от пользователя
     bot.on('text', (ctx) => {
         let input = ctx.message.text.toLowerCase()
         let res = findSymbol(input)
         ctx.reply(res)
     })
 
+    // Поиск соответсвующего символа
     function findSymbol(input) {
         let vocab = SYMBOLS_VOCAB
         let value = vocab.get(input)
@@ -123,10 +130,11 @@ try{
         return value
     }
 
+    // Обновление бота каждые 5 минут на Heroku
     let http = require("http")
     setInterval(function() {
     http.get("http://sign-finder-bot.herokuapp.com")
-    }, 144000000) // every 5 minutes (300000)
+    }, 144000000)
 
 } catch {
     console.log('Ошибка')
