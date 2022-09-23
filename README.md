@@ -1,13 +1,13 @@
-# sign-finder-bot
-Это телеграм-бот, разработанный на фреймворке Telegraf.js, созданный чтобы облегчить поиск ASCII-символов, которые отсутсвуют на клавиатуре ПК. 
-Чтобы найти необходимый символ, можно написать его название или выбрать из предложенных категорий.
+# Sign-Finder-Bot
+It is a Telegram bot, developed by using Telegraf.js framework, created to simplify search of ASCII-symbols, which are missing on a PC keayboard.
+To find a required symbol, you can just write its name or choose from suggested categories.
 
 ### bot.js 
-Файл в котором содержится основной скрипт бота.
+File which contains the main script.
 
 ### Symbols
-В этой папке содержатся отедльные файлы с коллекциями символов по их категориям.
+This folder contains files with collections of the symbols by their categories.
 
 ### symbols.js
-Коллекция символов, не входящих в остальные категории. Для поиска соответвий реализован словарь с помощью функции ```map```. 
-Каждый символ является ключом, а потенциальные запросы пользователя - набором значений.
+The collection of symbols which are not included to other categories. There is a dictionary created by using the ```map``` function for searching symbols.
+Each symbol is a key and potential users' requests are values.
